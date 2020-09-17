@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+	
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		
+		<title>
+			   Best Way to do Multiple Select Combo Boxes in Rails | Gilluminate - By Jason Gill 
+		</title>
+				
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				
+		
+		
+
+		
+		
+		
+  		
+  		<link rel="stylesheet/less" type="text/css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/less/bootstrap.less">
+  		<link rel="stylesheet/less" type="text/css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/less/responsive.less">
+
+		
+		
+<link rel="stylesheet" id="wp-block-library-css" href="https://gilluminate.com/inc/css/dist/block-library/style.min.css?ver=5.5.1" type="text/css" media="all">
+<link rel="stylesheet" id="wp-syntax-css-css" href="https://gilluminate.com/wp-content/plugins/wp-syntax/css/wp-syntax.css?ver=1.1" type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/css/bootstrap.css?ver=1.0" type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-responsive-css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/css/responsive.css?ver=1.0" type="text/css" media="all">
+<link rel="stylesheet" id="wp-bootstrap-css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/style.css?ver=1.0" type="text/css" media="all">
+<link rel="stylesheet" id="fancybox-css" href="https://gilluminate.com/wp-content/plugins/easy-fancybox/css/jquery.fancybox.min.css?ver=1.3.24" type="text/css" media="screen">
+<script type="text/javascript" src="https://gilluminate.com/inc/js/jquery/jquery.js?ver=1.12.4-wp" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/js/bootstrap.min.js?ver=1.2" id="bootstrap-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/js/scripts.js?ver=1.2" id="wpbs-scripts-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/js/modernizr.full.min.js?ver=1.2" id="modernizr-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/google-analyticator/external-tracking.min.js?ver=6.5.4" id="ga-external-tracking-js"></script>
+<link rel="alternate" type="application/json" href="https://gilluminate.com/wp-json/wp/v2/posts/176"><link rel="canonical" href="https://gilluminate.com/2007/02/15/best-way-to-do-multiple-select-combo-boxes-in-rails/">
+
+<link rel="alternate" type="application/json+oembed" href="https://gilluminate.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fgilluminate.com%2F2007%2F02%2F15%2Fbest-way-to-do-multiple-select-combo-boxes-in-rails%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://gilluminate.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fgilluminate.com%2F2007%2F02%2F15%2Fbest-way-to-do-multiple-select-combo-boxes-in-rails%2F&amp;format=xml">
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #ffffff; }
+</style>
+	
+<script type="text/javascript">
+    var analyticsFileTypes = [''];
+    var analyticsSnippet = 'disabled';
+    var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-73622-1', 'auto');
+ 
+	ga('send', 'pageview');
+</script>
+		
+
+		
+		<style>
+        #main article {
+          border-bottom: none;
+        }
+        </style>		
+				<link rel="stylesheet" href="https://gilluminate.com/wp-content/themes/gilluminate-bootstrap/style.css" type="text/css" media="screen">
+		
+			</head>
+	
+	<body class="post-template-default single single-post postid-176 single-format-standard custom-background">
+				
+		<header role="banner">
+		
+			<div id="inner-header" class="clearfix">
+				
+				<div class="navbar navbar-fixed-top">
+					<div class="navbar-inner">
+						<div class="container-fluid nav-container">
+							<nav role="navigation">
+								<a class="brand" id="logo" title="By Jason Gill" href="https://gilluminate.com">Gilluminate</a>
+								
+								<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							        <span class="icon-bar"></span>
+							        <span class="icon-bar"></span>
+							        <span class="icon-bar"></span>
+								</a>
+								
+								<div class="nav-collapse">
+									<ul id="menu-top-menu" class="nav"><li id="menu-item-6569" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent"><a href="https://gilluminate.com/developer-blog/">Developer Blog</a></li>
+</ul>								</div>
+								
+							</nav>
+							
+														
+						</div>
+					</div>
+				</div>
+			
+			</div> 
+		
+		</header> 
+		
+		<div class="container-fluid">
+			
+			<div id="content" class="clearfix row-fluid">
+			
+				<div id="main" class="span8 clearfix" role="main">
+
+										
+					<article id="post-176" class="clearfix post-176 post type-post status-publish format-standard hentry category-tech tag-ruby-on-rails" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+						
+						<header>
+						
+														
+							<div class="page-header"><h1 class="single-title" itemprop="headline">Best Way to do Multiple Select Combo Boxes in Rails</h1></div>
+							
+							<p class="meta">Posted <time datetime="2007-02-15" pubdate>February 15, 2007</time> by <a href="https://gilluminate.com/author/petethechop/" title="Posts by Jason Gill" rel="author">Jason Gill</a> <span class="amp">&amp;</span> filed under <a href="https://gilluminate.com/topic/tech/" rel="category tag">Developer Blog</a>.</p>
+						
+						</header> 
+					
+						<section class="post_content clearfix" itemprop="articleBody">
+							<p class="lead">After much trial and error, and frustration, I have finally come up with what I believe is the <strong>best</strong>  possible way to do multiple select combo boxes in Rails. It&rsquo;s not so much that there aren&rsquo;t examples on the web, it&rsquo;s just that every example is so different. I&rsquo;ve used what I feel is the best from each example and created this example.</p>
+<p>First, it&rsquo;s best that the <em>options</em> are in an array somewhere. In this example, we&rsquo;ll assume that all states are set in an array on the application.rb and the array is named $states</p>
+<p>In the _form, or wherever your form is, do the following:</p>
+
+<div class="wp_syntax" style="position:relative;"><table><tr><td class="code"><pre class="ruby" style="font-family:monospace;"><span style="color:#006600; font-weight:bold;">&amp;</span>lt;<span style="color:#006600; font-weight:bold;">%</span> <span style="color:#9966CC; font-weight:bold;">if</span> <span style="color:#0066ff; font-weight:bold;">@model_name</span> <span style="color:#9966CC; font-weight:bold;">and</span> <span style="color:#0066ff; font-weight:bold;">@model_name</span>.<span style="color:#9900CC;">states</span>
+<span style="color:#0066ff; font-weight:bold;">@states_selected</span> = <span style="color:#0066ff; font-weight:bold;">@model_name</span>.<span style="color:#9900CC;">states</span>.<span style="color:#9900CC;">collect</span>
+<span style="color:#9966CC; font-weight:bold;">end</span> <span style="color:#006600; font-weight:bold;">%&amp;</span>gt;
+<span style="color:#006600; font-weight:bold;">&amp;</span>lt;label <span style="color:#9966CC; font-weight:bold;">for</span>=<span style="color:#996600;">"model_name_states"</span><span style="color:#006600; font-weight:bold;">&amp;</span>gt;State<span style="color:#006600; font-weight:bold;">&amp;</span>lt;<span style="color:#006600; font-weight:bold;">/</span>label<span style="color:#006600; font-weight:bold;">&amp;</span>gt;<span style="color:#006600; font-weight:bold;">&amp;</span>lt;br<span style="color:#006600; font-weight:bold;">/&amp;</span>gt;
+<span style="color:#006600; font-weight:bold;">&amp;</span>lt;<span style="color:#006600; font-weight:bold;">%</span>= select_tag <span style="color:#996600;">'model_name[states][]'</span>, options_for_select<span style="color:#006600; font-weight:bold;">(</span>$states, <span style="color:#0066ff; font-weight:bold;">@states_selected</span><span style="color:#006600; font-weight:bold;">)</span>, <span style="color:#006600; font-weight:bold;">{</span> <span style="color:#ff3333; font-weight:bold;">:multiple</span> =<span style="color:#006600; font-weight:bold;">&amp;</span>gt; <span style="color:#0000FF; font-weight:bold;">true</span>, <span style="color:#ff3333; font-weight:bold;">:size</span> =<span style="color:#006600; font-weight:bold;">&amp;</span>gt;<span style="color:#006666;">5</span>, <span style="color:#ff3333; font-weight:bold;">:id</span> =<span style="color:#006600; font-weight:bold;">&amp;</span>gt; <span style="color:#996600;">"model_name_states"</span> <span style="color:#006600; font-weight:bold;">}</span> <span style="color:#006600; font-weight:bold;">%&amp;</span>gt;<span style="color:#006600; font-weight:bold;">&amp;</span>lt;<span style="color:#006600; font-weight:bold;">/</span>p<span style="color:#006600; font-weight:bold;">&amp;</span>gt;</pre></td></tr></table><p class="theCode" style="display:none;">&amp;lt;% if @model_name and @model_name.states
+@states_selected = @model_name.states.collect
+end %&amp;gt;
+&amp;lt;label for="model_name_states"&amp;gt;State&amp;lt;/label&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;%= select_tag 'model_name[states][]', options_for_select($states, @states_selected), { :multiple =&amp;gt; true, :size =&amp;gt;5, :id =&amp;gt; "model_name_states" } %&amp;gt;&amp;lt;/p&amp;gt;</p></div>
+
+<p>This will not only dynamically create your <em>select</em> field with each <em>option</em>, but it will make it so that if someone leaves off a required field the same selected states will be selected on the <em>edit</em> screen!</p>
+<p>See the Rails documentation for <code>options_for_select</code> to customize it even further. Obviously you can leave off the <code>:multiple</code> and <code>:size</code> to make it a single select with similar results, but it&rsquo;s better to use <code>select</code>  instead of <code>select_tag</code> for single select combo boxes.</p>
+							
+												
+						</section> 
+						
+						<footer>
+			
+							<p class="tags"><span class="tags-title">Tags:</span> <a href="https://gilluminate.com/tag/ruby-on-rails/" rel="tag">Ruby on Rails</a></p>							
+														
+						</footer> 
+					
+					</article> 
+					
+										
+								
+					
+								
+				</div> 
+    
+								<div id="sidebar1" class="fluid-sidebar sidebar span4" role="complementary">
+				
+					
+						<div id="text-10" class="widget widget_text">			<div class="textwidget"></div>
+		</div>
+					
+				</div>    
+			</div> 
+
+			<footer role="contentinfo">
+			
+				<div id="inner-footer" class="clearfix">
+		          <hr>
+		          <div id="widget-footer" class="clearfix row-fluid">
+		            		            		            		            		            		            		          </div>
+					
+					<nav class="clearfix">
+											</nav>
+			
+					<p class="attribution pull-right">&copy; Gilluminate</p>
+				
+				</div> 
+				
+			</footer> 
+		
+		</div> 
+				
+		
+		
+		<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/wp-syntax/js/wp-syntax.js?ver=1.1" id="wp-syntax-js-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/easy-fancybox/js/jquery.fancybox.min.js?ver=1.3.24" id="jquery-fancybox-js"></script>
+<script type="text/javascript" id="jquery-fancybox-js-after">
+var fb_timeout, fb_opts={'overlayShow':true,'hideOnOverlayClick':true,'showCloseButton':true,'margin':20,'centerOnScroll':true,'enableEscapeButton':true,'autoScale':true };
+if(typeof easy_fancybox_handler==='undefined'){
+var easy_fancybox_handler=function(){
+jQuery('.nofancybox,a.wp-block-file__button,a.pin-it-button,a[href*="pinterest.com/pin/create"],a[href*="facebook.com/share"],a[href*="twitter.com/share"]').addClass('nolightbox');
+/* IMG */
+var fb_IMG_select='a[href*=".jpg"]:not(.nolightbox,li.nolightbox>a),area[href*=".jpg"]:not(.nolightbox),a[href*=".jpeg"]:not(.nolightbox,li.nolightbox>a),area[href*=".jpeg"]:not(.nolightbox),a[href*=".png"]:not(.nolightbox,li.nolightbox>a),area[href*=".png"]:not(.nolightbox),a[href*=".webp"]:not(.nolightbox,li.nolightbox>a),area[href*=".webp"]:not(.nolightbox)';
+jQuery(fb_IMG_select).addClass('fancybox image');
+var fb_IMG_sections=jQuery('.gallery,.wp-block-gallery,.tiled-gallery,.wp-block-jetpack-tiled-gallery');
+fb_IMG_sections.each(function(){jQuery(this).find(fb_IMG_select).attr('rel','gallery-'+fb_IMG_sections.index(this));});
+jQuery('a.fancybox,area.fancybox,li.fancybox a').each(function(){jQuery(this).fancybox(jQuery.extend({},fb_opts,{'transitionIn':'elastic','easingIn':'easeOutBack','transitionOut':'elastic','easingOut':'easeInBack','opacity':false,'hideOnContentClick':false,'titleShow':true,'titlePosition':'over','titleFromAlt':true,'showNavArrows':true,'enableKeyboardNav':true,'cyclic':false}))});};
+jQuery('a.fancybox-close').on('click',function(e){e.preventDefault();jQuery.fancybox.close()});
+};
+var easy_fancybox_auto=function(){setTimeout(function(){jQuery('#fancybox-auto').trigger('click')},1000);};
+jQuery(easy_fancybox_handler);jQuery(document).on('post-load',easy_fancybox_handler);
+jQuery(easy_fancybox_auto);
+</script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/easy-fancybox/js/jquery.easing.min.js?ver=1.4.1" id="jquery-easing-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/easy-fancybox/js/jquery.mousewheel.min.js?ver=3.1.13" id="jquery-mousewheel-js"></script>
+
+	</body>
+
+</html>

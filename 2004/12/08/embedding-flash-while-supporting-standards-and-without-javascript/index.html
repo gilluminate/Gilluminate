@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+	
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		
+		<title>
+			   Embedding Flash While Supporting Standards (and without javaScript) | Gilluminate - By Jason Gill 
+		</title>
+				
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				
+		
+		
+
+		
+		
+		
+  		
+  		<link rel="stylesheet/less" type="text/css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/less/bootstrap.less">
+  		<link rel="stylesheet/less" type="text/css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/less/responsive.less">
+
+		
+		
+<link rel="stylesheet" id="wp-block-library-css" href="https://gilluminate.com/inc/css/dist/block-library/style.min.css?ver=5.5.1" type="text/css" media="all">
+<link rel="stylesheet" id="wp-syntax-css-css" href="https://gilluminate.com/wp-content/plugins/wp-syntax/css/wp-syntax.css?ver=1.1" type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/css/bootstrap.css?ver=1.0" type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-responsive-css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/css/responsive.css?ver=1.0" type="text/css" media="all">
+<link rel="stylesheet" id="wp-bootstrap-css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/style.css?ver=1.0" type="text/css" media="all">
+<link rel="stylesheet" id="fancybox-css" href="https://gilluminate.com/wp-content/plugins/easy-fancybox/css/jquery.fancybox.min.css?ver=1.3.24" type="text/css" media="screen">
+<script type="text/javascript" src="https://gilluminate.com/inc/js/jquery/jquery.js?ver=1.12.4-wp" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/js/bootstrap.min.js?ver=1.2" id="bootstrap-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/js/scripts.js?ver=1.2" id="wpbs-scripts-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/js/modernizr.full.min.js?ver=1.2" id="modernizr-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/google-analyticator/external-tracking.min.js?ver=6.5.4" id="ga-external-tracking-js"></script>
+<link rel="alternate" type="application/json" href="https://gilluminate.com/wp-json/wp/v2/posts/9"><link rel="canonical" href="https://gilluminate.com/2004/12/08/embedding-flash-while-supporting-standards-and-without-javascript/">
+
+<link rel="alternate" type="application/json+oembed" href="https://gilluminate.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fgilluminate.com%2F2004%2F12%2F08%2Fembedding-flash-while-supporting-standards-and-without-javascript%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://gilluminate.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fgilluminate.com%2F2004%2F12%2F08%2Fembedding-flash-while-supporting-standards-and-without-javascript%2F&amp;format=xml">
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #ffffff; }
+</style>
+	
+<script type="text/javascript">
+    var analyticsFileTypes = [''];
+    var analyticsSnippet = 'disabled';
+    var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-73622-1', 'auto');
+ 
+	ga('send', 'pageview');
+</script>
+		
+
+		
+		<style>
+        #main article {
+          border-bottom: none;
+        }
+        </style>		
+				<link rel="stylesheet" href="https://gilluminate.com/wp-content/themes/gilluminate-bootstrap/style.css" type="text/css" media="screen">
+		
+			</head>
+	
+	<body class="post-template-default single single-post postid-9 single-format-standard custom-background">
+				
+		<header role="banner">
+		
+			<div id="inner-header" class="clearfix">
+				
+				<div class="navbar navbar-fixed-top">
+					<div class="navbar-inner">
+						<div class="container-fluid nav-container">
+							<nav role="navigation">
+								<a class="brand" id="logo" title="By Jason Gill" href="https://gilluminate.com">Gilluminate</a>
+								
+								<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							        <span class="icon-bar"></span>
+							        <span class="icon-bar"></span>
+							        <span class="icon-bar"></span>
+								</a>
+								
+								<div class="nav-collapse">
+									<ul id="menu-top-menu" class="nav"><li id="menu-item-6569" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent"><a href="https://gilluminate.com/developer-blog/">Developer Blog</a></li>
+</ul>								</div>
+								
+							</nav>
+							
+														
+						</div>
+					</div>
+				</div>
+			
+			</div> 
+		
+		</header> 
+		
+		<div class="container-fluid">
+			
+			<div id="content" class="clearfix row-fluid">
+			
+				<div id="main" class="span8 clearfix" role="main">
+
+										
+					<article id="post-9" class="clearfix post-9 post type-post status-publish format-standard hentry category-tech tag-firefox tag-flash tag-internet-explorer tag-standards" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+						
+						<header>
+						
+														
+							<div class="page-header"><h1 class="single-title" itemprop="headline">Embedding Flash While Supporting Standards (and without javaScript)</h1></div>
+							
+							<p class="meta">Posted <time datetime="2004-12-8" pubdate>December 8, 2004</time> by <a href="https://gilluminate.com/author/petethechop/" title="Posts by Jason Gill" rel="author">Jason Gill</a> <span class="amp">&amp;</span> filed under <a href="https://gilluminate.com/topic/tech/" rel="category tag">Developer Blog</a>.</p>
+						
+						</header> 
+					
+						<section class="post_content clearfix" itemprop="articleBody">
+							<h3>An even better improvement to the Flash Satay and Flash Javay methods</h3>
+<p class="lead">I&rsquo;ve been looking at the <a href="http://www.alistapart.com/articles/flashsatay/">Flash Satay</a> method of maintaining valid markup using flash (the &lt;embed&gt; tag commonly used for non-IE browsers is no longer supported by current versions of HTML and XHTML). It always seemed a little wacky and time consuming to have to load your flash content into a container .swf and was not appealing to me at all. The <a href="http://www.alistapart.com/comments/flashsatay/P250/#258">Flash Javay</a> method tries to address this problem, but I never liked the idea of using that much javaScript either. I mean, haven&rsquo;t we spent the past few years trying to come up with a Flash detection that doesn&rsquo;t use javaScript? The Javay method seems like a step backward, not forward.</p>
+<p>Before I share my newly found solution to both problems, let me share this little newly found secret about Internet Explorer that might be useful to you in many other applications other than embedding Flash. Using the following code will only show up in Internet Explorer browsers:</p>
+<p><code>&lt;!--[if IE]&gt;You are using IE!&lt;![endif]--&gt;</code></p>
+<p>Now that we&rsquo;ve got that out of the way, lets discuss what I&rsquo;ve dubbed the Flash Gillay method. (Because everyone who comes up with a modified version of the Satay method has given it a new name, I&rsquo;ve decided to name this one after myself in hopes for fame and fortune!) The general idea is to use the &lt;object&gt; tag exactly as it is commonly used, but to replace the &lt;embed&gt; tag with the Satay formatted &lt;object&gt; tag. Putting the Satay format inside the common format will work fine for browsers that would otherwise need the &lt;embed&gt; tag without any other code to help it out. For example, the following code will work in FireFox/Mozilla/Netscape without any problems:</p>
+<p><code>&lt;object</code></p>
+<p>classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"</p>
+<p>codebase="http://download.macromedia.com</p>
+<p>/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0"</p>
+<p>width="400" height="300" id="movie" align=""&gt;</p>
+<p>&lt;param name="movie" value="movie.swf" /&gt;</p>
+<p>&lt;object type="application/x-shockwave-flash"</p>
+<p>data="movie.swf"  width="400" height="300"&gt;</p>
+<p>&lt;/object&gt;</p>
+<p>&lt;/object&gt;</p>
+<p>Notice that there&rsquo;s no need for a container movie.</p>
+<p>Now of course, IE browsers are going to CHOKE on this trying endlessly to load the second object. Here&rsquo;s where the above mentioned trick comes in handy. Without using any Javascript at all, we can hide the second object from IE browsers by using the following:</p>
+<p><code>&lt;object</code></p>
+<p>classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"</p>
+<p>codebase="http://download.macromedia.com</p>
+<p>/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0"</p>
+<p>width="400" height="300" id="movie" align=""&gt;</p>
+<p>&lt;param name="movie" value="movie.swf" /&gt;</p>
+<p>&lt;!--[if !IE]&gt; &lt;--&gt;</p>
+<p>&lt;object type="application/x-shockwave-flash"</p>
+<p>data="movie.swf"  width="400" height="300"&gt;</p>
+<p>&lt;/object&gt;</p>
+<p>&lt;!--&gt; &lt;![endif]--&gt;</p>
+<p>&lt;/object&gt;</p>
+<p>And as for the need for an alternate image or text to appear if Flash is not installed, you can now take it a step further and be even more standards compliant than the Satay method by making your alt text readable by screen readers:</p>
+<p><code>&lt;object</code></p>
+<p>classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"</p>
+<p>codebase="http://download.macromedia.com</p>
+<p>/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0"</p>
+<p>width="400" height="300" id="movie" align=""&gt;</p>
+<p>&lt;param name="movie" value="movie.swf" /&gt;</p>
+<p>&lt;!--[if !IE]&gt; &lt;--&gt;</p>
+<p>&lt;object type="application/x-shockwave-flash"</p>
+<p>data="movie.swf"  width="400" height="300"&gt;<br>
+Description of Flash Content for screen readers</p>
+<p>&lt;/object&gt;</p>
+<p>&lt;!--&gt; &lt;![endif]--&gt;</p>
+<p>&lt;!--[if IE]&gt;</p>
+<p>Description of Flash Content for screen readers</p>
+<p>&lt;![endif]--&gt;</p>
+<p>&lt;/object&gt;</p>
+<p>Notice the use of &lt;&ndash;&gt; and &lt;!&ndash;&gt; to trick non IE browsers into thinking that their respective lines end the comment and continue to render what&rsquo;s inside the IF statement.</p>
+<p>Now you can use the latest recommended <a href="http://www.macromedia.com/software/flash/download/detection_kit/">Flash detection</a> methods making it un-necessary to have your alt content point to a flash download page.</p>
+<p>I have tested this method on IE 6.0, IE 5.5, Firefox 1.0, Mozilla 1.5, Netscape 7.0, Opera 7.1, Safari 1.0.2, IE 5.2 Mac, and yes, even Netscape 4.8. If you see any flaws in this method, I&rsquo;d love to hear about it via email (I apologize for the lack of commenting capabilities on this blog, I&rsquo;m still working on it).</p>
+<p>This method can be seen in practice at <a href="https://gilluminate.com/">https://gilluminate.com/</a></p>
+<p><em>(12-21-2004 NOTE: Thanks to <a href="http://www.striderweb.com/">Stephen Rider</a> for pointing out to me that about 8 months prior to this blog this method already existed as the <a href="http://ln.hixie.ch/?start=1081798064&amp;count=1">Hixie Method</a>. I maintain that I wasn&rsquo;t aware of the Hixie Method at the original writing of this blog and apologize for the repeat.)</em></p>
+<p><em>(01-17-2005 NOTE: If you plan to use the SetVariable command, you can still use id=&rdquo;&rdquo; for the IE version but you should use name=&rdquo;&rdquo; for the other version.)</em></p>
+<p><em>(02-01-2005 NOTE: Comments are now turned on.)</em></p>
+<p><em>(05-17-2005 NOTE: For information on why this method is <em>more</em> standards compliant than the Satay method, see the W3C <a href="http://www.w3.org/TR/REC-html40/struct/objects.html#h-13.3.1">Rules for rendering objects</a>. Also, if IE followed these rules completely, they would not choke on the inner object tag, but only render the outter, and there would be no need for the extra IE only code.)</em></p>
+							
+												
+						</section> 
+						
+						<footer>
+			
+							<p class="tags"><span class="tags-title">Tags:</span> <a href="https://gilluminate.com/tag/firefox/" rel="tag">Firefox</a> <a href="https://gilluminate.com/tag/flash/" rel="tag">Flash</a> <a href="https://gilluminate.com/tag/internet-explorer/" rel="tag">Internet Explorer</a> <a href="https://gilluminate.com/tag/standards/" rel="tag">Standards</a></p>							
+														
+						</footer> 
+					
+					</article> 
+					
+										
+								
+					
+								
+				</div> 
+    
+								<div id="sidebar1" class="fluid-sidebar sidebar span4" role="complementary">
+				
+					
+						<div id="text-10" class="widget widget_text">			<div class="textwidget"></div>
+		</div>
+					
+				</div>    
+			</div> 
+
+			<footer role="contentinfo">
+			
+				<div id="inner-footer" class="clearfix">
+		          <hr>
+		          <div id="widget-footer" class="clearfix row-fluid">
+		            		            		            		            		            		            		          </div>
+					
+					<nav class="clearfix">
+											</nav>
+			
+					<p class="attribution pull-right">&copy; Gilluminate</p>
+				
+				</div> 
+				
+			</footer> 
+		
+		</div> 
+				
+		
+		
+		<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/wp-syntax/js/wp-syntax.js?ver=1.1" id="wp-syntax-js-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/easy-fancybox/js/jquery.fancybox.min.js?ver=1.3.24" id="jquery-fancybox-js"></script>
+<script type="text/javascript" id="jquery-fancybox-js-after">
+var fb_timeout, fb_opts={'overlayShow':true,'hideOnOverlayClick':true,'showCloseButton':true,'margin':20,'centerOnScroll':true,'enableEscapeButton':true,'autoScale':true };
+if(typeof easy_fancybox_handler==='undefined'){
+var easy_fancybox_handler=function(){
+jQuery('.nofancybox,a.wp-block-file__button,a.pin-it-button,a[href*="pinterest.com/pin/create"],a[href*="facebook.com/share"],a[href*="twitter.com/share"]').addClass('nolightbox');
+/* IMG */
+var fb_IMG_select='a[href*=".jpg"]:not(.nolightbox,li.nolightbox>a),area[href*=".jpg"]:not(.nolightbox),a[href*=".jpeg"]:not(.nolightbox,li.nolightbox>a),area[href*=".jpeg"]:not(.nolightbox),a[href*=".png"]:not(.nolightbox,li.nolightbox>a),area[href*=".png"]:not(.nolightbox),a[href*=".webp"]:not(.nolightbox,li.nolightbox>a),area[href*=".webp"]:not(.nolightbox)';
+jQuery(fb_IMG_select).addClass('fancybox image');
+var fb_IMG_sections=jQuery('.gallery,.wp-block-gallery,.tiled-gallery,.wp-block-jetpack-tiled-gallery');
+fb_IMG_sections.each(function(){jQuery(this).find(fb_IMG_select).attr('rel','gallery-'+fb_IMG_sections.index(this));});
+jQuery('a.fancybox,area.fancybox,li.fancybox a').each(function(){jQuery(this).fancybox(jQuery.extend({},fb_opts,{'transitionIn':'elastic','easingIn':'easeOutBack','transitionOut':'elastic','easingOut':'easeInBack','opacity':false,'hideOnContentClick':false,'titleShow':true,'titlePosition':'over','titleFromAlt':true,'showNavArrows':true,'enableKeyboardNav':true,'cyclic':false}))});};
+jQuery('a.fancybox-close').on('click',function(e){e.preventDefault();jQuery.fancybox.close()});
+};
+var easy_fancybox_auto=function(){setTimeout(function(){jQuery('#fancybox-auto').trigger('click')},1000);};
+jQuery(easy_fancybox_handler);jQuery(document).on('post-load',easy_fancybox_handler);
+jQuery(easy_fancybox_auto);
+</script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/easy-fancybox/js/jquery.easing.min.js?ver=1.4.1" id="jquery-easing-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/easy-fancybox/js/jquery.mousewheel.min.js?ver=3.1.13" id="jquery-mousewheel-js"></script>
+
+	</body>
+
+</html>

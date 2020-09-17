@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+	
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		
+		<title>
+			   Ubuntu, ssh-agent and You! | Gilluminate - By Jason Gill 
+		</title>
+				
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				
+		
+		
+
+		
+		
+		
+  		
+  		<link rel="stylesheet/less" type="text/css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/less/bootstrap.less">
+  		<link rel="stylesheet/less" type="text/css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/less/responsive.less">
+
+		
+		
+<link rel="stylesheet" id="wp-block-library-css" href="https://gilluminate.com/inc/css/dist/block-library/style.min.css?ver=5.5.1" type="text/css" media="all">
+<link rel="stylesheet" id="wp-syntax-css-css" href="https://gilluminate.com/wp-content/plugins/wp-syntax/css/wp-syntax.css?ver=1.1" type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/css/bootstrap.css?ver=1.0" type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-responsive-css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/css/responsive.css?ver=1.0" type="text/css" media="all">
+<link rel="stylesheet" id="wp-bootstrap-css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/style.css?ver=1.0" type="text/css" media="all">
+<link rel="stylesheet" id="fancybox-css" href="https://gilluminate.com/wp-content/plugins/easy-fancybox/css/jquery.fancybox.min.css?ver=1.3.24" type="text/css" media="screen">
+<script type="text/javascript" src="https://gilluminate.com/inc/js/jquery/jquery.js?ver=1.12.4-wp" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/js/bootstrap.min.js?ver=1.2" id="bootstrap-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/js/scripts.js?ver=1.2" id="wpbs-scripts-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/js/modernizr.full.min.js?ver=1.2" id="modernizr-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/google-analyticator/external-tracking.min.js?ver=6.5.4" id="ga-external-tracking-js"></script>
+<link rel="alternate" type="application/json" href="https://gilluminate.com/wp-json/wp/v2/posts/6631"><link rel="canonical" href="https://gilluminate.com/2013/04/04/ubuntu-ssh-agent-and-you/">
+
+<link rel="alternate" type="application/json+oembed" href="https://gilluminate.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fgilluminate.com%2F2013%2F04%2F04%2Fubuntu-ssh-agent-and-you%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://gilluminate.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fgilluminate.com%2F2013%2F04%2F04%2Fubuntu-ssh-agent-and-you%2F&amp;format=xml">
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #ffffff; }
+</style>
+	
+<script type="text/javascript">
+    var analyticsFileTypes = [''];
+    var analyticsSnippet = 'disabled';
+    var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-73622-1', 'auto');
+ 
+	ga('send', 'pageview');
+</script>
+		
+
+		
+		<style>
+        #main article {
+          border-bottom: none;
+        }
+        </style>		
+				<link rel="stylesheet" href="https://gilluminate.com/wp-content/themes/gilluminate-bootstrap/style.css" type="text/css" media="screen">
+		
+			</head>
+	
+	<body class="post-template-default single single-post postid-6631 single-format-standard custom-background">
+				
+		<header role="banner">
+		
+			<div id="inner-header" class="clearfix">
+				
+				<div class="navbar navbar-fixed-top">
+					<div class="navbar-inner">
+						<div class="container-fluid nav-container">
+							<nav role="navigation">
+								<a class="brand" id="logo" title="By Jason Gill" href="https://gilluminate.com">Gilluminate</a>
+								
+								<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							        <span class="icon-bar"></span>
+							        <span class="icon-bar"></span>
+							        <span class="icon-bar"></span>
+								</a>
+								
+								<div class="nav-collapse">
+									<ul id="menu-top-menu" class="nav"><li id="menu-item-6569" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent"><a href="https://gilluminate.com/developer-blog/">Developer Blog</a></li>
+</ul>								</div>
+								
+							</nav>
+							
+														
+						</div>
+					</div>
+				</div>
+			
+			</div> 
+		
+		</header> 
+		
+		<div class="container-fluid">
+			
+			<div id="content" class="clearfix row-fluid">
+			
+				<div id="main" class="span8 clearfix" role="main">
+
+										
+					<article id="post-6631" class="clearfix post-6631 post type-post status-publish format-standard hentry category-tech tag-git tag-linux tag-ssh tag-ubuntu" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+						
+						<header>
+						
+														
+							<div class="page-header"><h1 class="single-title" itemprop="headline">Ubuntu, ssh-agent and You!</h1></div>
+							
+							<p class="meta">Posted <time datetime="2013-04-4" pubdate>April 4, 2013</time> by <a href="https://gilluminate.com/author/petethechop/" title="Posts by Jason Gill" rel="author">Jason Gill</a> <span class="amp">&amp;</span> filed under <a href="https://gilluminate.com/topic/tech/" rel="category tag">Developer Blog</a>.</p>
+						
+						</header> 
+					
+						<section class="post_content clearfix" itemprop="articleBody">
+							<h2>Background</h2>
+<p class="lead">I&rsquo;m in the process of setting up a new <a href="https://www.digitalocean.com/">Droplet on DigitalOcean</a>. Mine is a Ubuntu droplet. The joy about DigitalOcean is that you have full control over your (super fast) server (and at a great price). You want Apache? you can install it yourself. You want git? same deal. Trying out node.js? You get the idea. Of course with the good comes the bad. You have all the power and all the responsibility. So, when I installed ssh in order to use git without constant username and password prompts, I ran into some issues.</p>
+<h2>The Problem</h2>
+<p>Once you set up ssh to be used with ssh keys, it relies on the ssh-agent to be running to serve up those keys to other apps (like git). The problem is, once you log out of your session on the server (via ssh) the ssh-agent also goes away and no longer serves up the keys. When you log back in and do something like `git pull` you are likely to be greeted with a message saying</p>
+<pre>Permission denied (publickey).</pre>
+<p>and through a little digging, you might even come up with the error</p>
+<pre>Could not open a connection to your authentication agent.</pre>
+<p>This is because the ssh-agent process has stopped. To start it back up, you would use</p>
+<pre>ssh-agent /bin/bash</pre>
+<p>But that&rsquo;s a pain to do every time you log into your server.</p>
+<h2>The Solution</h2>
+<p>The solution I chose uses a helpful app called Keychain. This should not be confused with Mac OS X Keychain, because they are not the same thing. Keychain is is a program designed to help you easily manage your SSH keys with minimal user interaction. It is implemented as a shell script which drives both ssh-agent and ssh-add. A notable feature of Keychain is that it can maintain a single ssh-agent process across multiple login sessions. This means that you only need to enter your passphrase once each time your local machine is booted.</p>
+<h2>Installation</h2>
+<p>With Ubuntu you can use apt-get to install keychain fairly painlessly</p>
+<pre>apt-get install keychain</pre>
+<p><a href="http://www.funtoo.org/wiki/Keychain">More info on Keychain usage</a></p>
+<h2>Tricks</h2>
+<p>If you are like me, and you do not want to run the Keychain command or get asked for your passphrase every time you login, you may add the following to your .bashrc (or .bash_aliases if that&rsquo;s how you roll):</p>
+<pre>alias ssh='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/*_rsa) &amp;&amp; ssh'</pre>
+<p>A few things to note with the alias line above.</p>
+<ul>
+<li>This basically checks to see if Keychain is doing it&rsquo;s thing already, and if not, get it going.</li>
+<li>The reason for the alias, is that it&rsquo;s basically tacking itself onto the very command you would want Keychain for in the first place&mdash;in this case: ssh. This means that the first time you actually attempt to connect via ssh it will just work. No hassle.</li>
+<li>Most examples of the line above will give you a concrete file path to the ssh key, but I attempted it with the wildcard (*) and it works great. If you are like me and use different keys for different services (GitHub and BitBucket for example), then this might be very useful to you. If you only use id_rsa then feel free to plug that in. The important thing to know is that you are putting the path to your keys in that spot. I&rsquo;m sure you can find many more examples to suit your style <a href="https://www.google.com/search?q=keychain%20ssh-agent" title="Search: keychain ssh-agent">on google</a></li>
+</ul>
+<h2>But Wait, There&rsquo;s More</h2>
+<p>The alias above is the one you will see all over the place as a suggestion to use with Keychain, but it only works if you use ssh as your trigger. What about the original problem of using `git pull` and seeing errors? Well, it turns out you can use another similar alias</p>
+<pre>alias git='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/*_rsa) &amp;&amp; git'</pre>
+<p>which accomplishes the same exact thing when you run your first git command after restarting your machine.</p>
+<h4>Let me know in the comments section if this helped you!</h4>
+							
+												
+						</section> 
+						
+						<footer>
+			
+							<p class="tags"><span class="tags-title">Tags:</span> <a href="https://gilluminate.com/tag/git/" rel="tag">git</a> <a href="https://gilluminate.com/tag/linux/" rel="tag">Linux</a> <a href="https://gilluminate.com/tag/ssh/" rel="tag">ssh</a> <a href="https://gilluminate.com/tag/ubuntu/" rel="tag">Ubuntu</a></p>							
+														
+						</footer> 
+					
+					</article> 
+					
+										
+								
+					
+								
+				</div> 
+    
+								<div id="sidebar1" class="fluid-sidebar sidebar span4" role="complementary">
+				
+					
+						<div id="text-10" class="widget widget_text">			<div class="textwidget"></div>
+		</div>
+					
+				</div>    
+			</div> 
+
+			<footer role="contentinfo">
+			
+				<div id="inner-footer" class="clearfix">
+		          <hr>
+		          <div id="widget-footer" class="clearfix row-fluid">
+		            		            		            		            		            		            		          </div>
+					
+					<nav class="clearfix">
+											</nav>
+			
+					<p class="attribution pull-right">&copy; Gilluminate</p>
+				
+				</div> 
+				
+			</footer> 
+		
+		</div> 
+				
+		
+		
+		<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/wp-syntax/js/wp-syntax.js?ver=1.1" id="wp-syntax-js-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/easy-fancybox/js/jquery.fancybox.min.js?ver=1.3.24" id="jquery-fancybox-js"></script>
+<script type="text/javascript" id="jquery-fancybox-js-after">
+var fb_timeout, fb_opts={'overlayShow':true,'hideOnOverlayClick':true,'showCloseButton':true,'margin':20,'centerOnScroll':true,'enableEscapeButton':true,'autoScale':true };
+if(typeof easy_fancybox_handler==='undefined'){
+var easy_fancybox_handler=function(){
+jQuery('.nofancybox,a.wp-block-file__button,a.pin-it-button,a[href*="pinterest.com/pin/create"],a[href*="facebook.com/share"],a[href*="twitter.com/share"]').addClass('nolightbox');
+/* IMG */
+var fb_IMG_select='a[href*=".jpg"]:not(.nolightbox,li.nolightbox>a),area[href*=".jpg"]:not(.nolightbox),a[href*=".jpeg"]:not(.nolightbox,li.nolightbox>a),area[href*=".jpeg"]:not(.nolightbox),a[href*=".png"]:not(.nolightbox,li.nolightbox>a),area[href*=".png"]:not(.nolightbox),a[href*=".webp"]:not(.nolightbox,li.nolightbox>a),area[href*=".webp"]:not(.nolightbox)';
+jQuery(fb_IMG_select).addClass('fancybox image');
+var fb_IMG_sections=jQuery('.gallery,.wp-block-gallery,.tiled-gallery,.wp-block-jetpack-tiled-gallery');
+fb_IMG_sections.each(function(){jQuery(this).find(fb_IMG_select).attr('rel','gallery-'+fb_IMG_sections.index(this));});
+jQuery('a.fancybox,area.fancybox,li.fancybox a').each(function(){jQuery(this).fancybox(jQuery.extend({},fb_opts,{'transitionIn':'elastic','easingIn':'easeOutBack','transitionOut':'elastic','easingOut':'easeInBack','opacity':false,'hideOnContentClick':false,'titleShow':true,'titlePosition':'over','titleFromAlt':true,'showNavArrows':true,'enableKeyboardNav':true,'cyclic':false}))});};
+jQuery('a.fancybox-close').on('click',function(e){e.preventDefault();jQuery.fancybox.close()});
+};
+var easy_fancybox_auto=function(){setTimeout(function(){jQuery('#fancybox-auto').trigger('click')},1000);};
+jQuery(easy_fancybox_handler);jQuery(document).on('post-load',easy_fancybox_handler);
+jQuery(easy_fancybox_auto);
+</script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/easy-fancybox/js/jquery.easing.min.js?ver=1.4.1" id="jquery-easing-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/easy-fancybox/js/jquery.mousewheel.min.js?ver=3.1.13" id="jquery-mousewheel-js"></script>
+
+	</body>
+
+</html>

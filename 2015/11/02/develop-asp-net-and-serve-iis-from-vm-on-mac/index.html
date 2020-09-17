@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+	
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		
+		<title>
+			   Develop ASP.NET and Serve IIS from VM on Mac | Gilluminate - By Jason Gill 
+		</title>
+				
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				
+		
+		
+
+		
+		
+		
+  		
+  		<link rel="stylesheet/less" type="text/css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/less/bootstrap.less">
+  		<link rel="stylesheet/less" type="text/css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/less/responsive.less">
+
+		
+		
+<link rel="stylesheet" id="wp-block-library-css" href="https://gilluminate.com/inc/css/dist/block-library/style.min.css?ver=5.5.1" type="text/css" media="all">
+<link rel="stylesheet" id="wp-syntax-css-css" href="https://gilluminate.com/wp-content/plugins/wp-syntax/css/wp-syntax.css?ver=1.1" type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/css/bootstrap.css?ver=1.0" type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-responsive-css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/css/responsive.css?ver=1.0" type="text/css" media="all">
+<link rel="stylesheet" id="wp-bootstrap-css" href="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/style.css?ver=1.0" type="text/css" media="all">
+<link rel="stylesheet" id="fancybox-css" href="https://gilluminate.com/wp-content/plugins/easy-fancybox/css/jquery.fancybox.min.css?ver=1.3.24" type="text/css" media="screen">
+<script type="text/javascript" src="https://gilluminate.com/inc/js/jquery/jquery.js?ver=1.12.4-wp" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/js/bootstrap.min.js?ver=1.2" id="bootstrap-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/js/scripts.js?ver=1.2" id="wpbs-scripts-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/themes/wordpress-bootstrap/library/js/modernizr.full.min.js?ver=1.2" id="modernizr-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/google-analyticator/external-tracking.min.js?ver=6.5.4" id="ga-external-tracking-js"></script>
+<link rel="alternate" type="application/json" href="https://gilluminate.com/wp-json/wp/v2/posts/6693"><link rel="canonical" href="https://gilluminate.com/2015/11/02/develop-asp-net-and-serve-iis-from-vm-on-mac/">
+
+<link rel="alternate" type="application/json+oembed" href="https://gilluminate.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fgilluminate.com%2F2015%2F11%2F02%2Fdevelop-asp-net-and-serve-iis-from-vm-on-mac%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://gilluminate.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fgilluminate.com%2F2015%2F11%2F02%2Fdevelop-asp-net-and-serve-iis-from-vm-on-mac%2F&amp;format=xml">
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #ffffff; }
+</style>
+	
+<script type="text/javascript">
+    var analyticsFileTypes = [''];
+    var analyticsSnippet = 'disabled';
+    var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-73622-1', 'auto');
+ 
+	ga('send', 'pageview');
+</script>
+		
+
+		
+		<style>
+        #main article {
+          border-bottom: none;
+        }
+        </style>		
+				<link rel="stylesheet" href="https://gilluminate.com/wp-content/themes/gilluminate-bootstrap/style.css" type="text/css" media="screen">
+		
+			</head>
+	
+	<body class="post-template-default single single-post postid-6693 single-format-standard custom-background">
+				
+		<header role="banner">
+		
+			<div id="inner-header" class="clearfix">
+				
+				<div class="navbar navbar-fixed-top">
+					<div class="navbar-inner">
+						<div class="container-fluid nav-container">
+							<nav role="navigation">
+								<a class="brand" id="logo" title="By Jason Gill" href="https://gilluminate.com">Gilluminate</a>
+								
+								<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							        <span class="icon-bar"></span>
+							        <span class="icon-bar"></span>
+							        <span class="icon-bar"></span>
+								</a>
+								
+								<div class="nav-collapse">
+									<ul id="menu-top-menu" class="nav"><li id="menu-item-6569" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent"><a href="https://gilluminate.com/developer-blog/">Developer Blog</a></li>
+</ul>								</div>
+								
+							</nav>
+							
+														
+						</div>
+					</div>
+				</div>
+			
+			</div> 
+		
+		</header> 
+		
+		<div class="container-fluid">
+			
+			<div id="content" class="clearfix row-fluid">
+			
+				<div id="main" class="span8 clearfix" role="main">
+
+										
+					<article id="post-6693" class="clearfix post-6693 post type-post status-publish format-standard hentry category-tech" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+						
+						<header>
+						
+														
+							<div class="page-header"><h1 class="single-title" itemprop="headline">Develop ASP.NET and Serve IIS from VM on Mac</h1></div>
+							
+							<p class="meta">Posted <time datetime="2015-11-2" pubdate>November 2, 2015</time> by <a href="https://gilluminate.com/author/petethechop/" title="Posts by Jason Gill" rel="author">Jason Gill</a> <span class="amp">&amp;</span> filed under <a href="https://gilluminate.com/topic/tech/" rel="category tag">Developer Blog</a>.</p>
+						
+						</header> 
+					
+						<section class="post_content clearfix" itemprop="articleBody">
+							<p class="lead">If you want to develop using Sublime Text (or other) on Mac but your company uses ASP.NET MVC for back-end server, this information may be helpful to get you to where you can have a shared drive in from Mac to a VM. Build using Visual Studio in the VM, but develop using the Mac.</p>
+<p>These instructions are Parallels specific, but should be very similar for other VM hosts.</p>
+<h3>Set up a static ip address on your Virtual Machine</h3>
+<ol>
+<li>In Windows, go to Control Panel &gt; Network and Internet &gt; Network and Sharing Center</li>
+<li>Click &ldquo;Ethernet&rdquo; under the active networks section.</li>
+<li>Click the &ldquo;Properties&rdquo; button.</li>
+<li>Scroll down and highlight &ldquo;Internet Protocol Version 4 (TCP/IPV 4)&rdquo;</li>
+<li>Click the &ldquo;Properties&rdquo; button</li>
+<li>Select the &ldquo;Use the following IP address:&rdquo; option and use the following (exactly)
+<ul>
+<li>IP Address: 10.211.55.3</li>
+<li>Subnet Mask: 255.255.255.0</li>
+<li>Default Gateway: 10.211.55.1</li>
+<li>Preferred DNS Server: 10.211.55.1</li>
+<li>Alternate DNS Server: (leave this one blank)</li>
+</ul>
+</li>
+</ol>
+<h3>Add to hosts</h3>
+<p>On your Mac, edit /etc/hosts file</p>
+<p>Add the following line, with your VM guest IP address from the previous step:</p>
+<p><code>10.211.55.3 localhost</code></p>
+<h3>Install IIS on Windows</h3>
+<p>This has been documented a thousand places. I followed&nbsp;<a href="http://www.howtogeek.com/112455/how-to-install-iis-8-on-windows-8/">these instructions</a></p>
+<h3>Enable .NET</h3>
+<ol>
+<li>Type <code>appwiz.cpl</code> into Run (WIN +R)</li>
+<li>On the left hand side click on the &ldquo;Turn Windows features on or off&rdquo; link.</li>
+<li>Now expand Internet Information Services &gt; World Wide Web Services &gt; Application Development Features.</li>
+<li>Place a check next to <code>ASP.NET 4.6</code>&nbsp;(or your version) which will also check 3 other boxes.</li>
+<li>Click OK.</li>
+</ol>
+<h3>Install URL Rewrite 2.0</h3>
+<ol>
+<li>Download and install the <a href="https://go.microsoft.com/?linkid=9737537">Web Platform Installer</a> on Windows</li>
+<li>Once it instals and opens, search for <code>URL Rewrite 2.0</code></li>
+<li>Click the Add button</li>
+<li>Down below, click the Install button</li>
+<li>Accept the terms</li>
+</ol>
+<h3>Enable Network Sharing</h3>
+<p>Windows 8:</p>
+<ol>
+<li>Open File Explorer</li>
+<li>Click the Network shortcut on the left column</li>
+<li>When prompted click the little yellow bar at top &ldquo;Click to change&rdquo;</li>
+<li>Select &ldquo;Turn on network discovery and file sharing&rdquo;</li>
+<li>Select the &ldquo;No&rdquo; option.</li>
+</ol>
+<p>Windows 10:</p>
+<ol>
+<li>Settings &gt; Network &amp; Internet &gt; Ethernet</li>
+<li>Click the blue Network Icon (Network Connected) under the Ethernet title</li>
+<li>Turn the switch to on.</li>
+<li>Restart</li>
+</ol>
+<h3>Configure your web server</h3>
+<ol>
+<li>In IIS Manager, go to your Default Web Site under Sites.</li>
+<li>Click Basic Settings from the column on the right.
+<ul>
+<li>Select the DefaultAppPool.</li>
+<li>Point the Physical Path your Web project&nbsp;folder. (something like \\Mac\Share\repo\Project.Web)</li>
+<li>Click OK</li>
+</ul>
+</li>
+</ol>
+<h3>Turn off Private Network firewall</h3>
+<ol>
+<li>In Windows 8: Go to Control Panel &gt; System and Security &gt; Windows Firewall &gt; Turn Windows Firewall on or off. In Windows 10: Go to Settings &gt; Network and Internet &gt; Ethernet (left tab) &gt; Windows Firewall &gt; Turn Windows Firewall on or off.</li>
+<li>Under Private network settings, choose to Turn off Windows Firewall</li>
+<li>Click OK.</li>
+</ol>
+<h3>Build</h3>
+<p>Build the code in Visual Studio</p>
+<h3>Test</h3>
+<ol>
+<li>test to see if you can access the content from within the Virtual Machine</li>
+<li>If that works, try it from your Mac</li>
+</ol>
+<h3>Viewing Changes</h3>
+<ol>
+<li>Any server code (C#, .NET, Razor) changes made to the app will require the DefaultAppPool to be Recycled before they will appear in your browser on the mac.</li>
+<li>Fire up IIS Manager by typing <code>inetmgr</code> into Run (WIN + R)</li>
+<li>Select Application Pools &gt; DefaultAppPool</li>
+<li>Choose Recycle in the right column (note: recycle happens very fast)</li>
+<li>Refresh the browser (this usually takes a moment or two after a recycle)</li>
+</ol>
+<h2>Troubleshooting</h2>
+<ol>
+<li>Build Clean Solution</li>
+<li>Build Rebuild Solution</li>
+<li>Restart the app pool</li>
+<li>Make sure your mapped drive &gt; repo&nbsp;directory isn&rsquo;t marked as read only
+<ul>
+<li>right click your&nbsp;repo&nbsp;directory &gt; properties</li>
+<li>if read only is marked, uncheck it and apply to all sub-folders and files.</li>
+</ul>
+</li>
+</ol>
+							
+												
+						</section> 
+						
+						<footer>
+			
+														
+														
+						</footer> 
+					
+					</article> 
+					
+										
+								
+					
+								
+				</div> 
+    
+								<div id="sidebar1" class="fluid-sidebar sidebar span4" role="complementary">
+				
+					
+						<div id="text-10" class="widget widget_text">			<div class="textwidget"></div>
+		</div>
+					
+				</div>    
+			</div> 
+
+			<footer role="contentinfo">
+			
+				<div id="inner-footer" class="clearfix">
+		          <hr>
+		          <div id="widget-footer" class="clearfix row-fluid">
+		            		            		            		            		            		            		          </div>
+					
+					<nav class="clearfix">
+											</nav>
+			
+					<p class="attribution pull-right">&copy; Gilluminate</p>
+				
+				</div> 
+				
+			</footer> 
+		
+		</div> 
+				
+		
+		
+		<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/wp-syntax/js/wp-syntax.js?ver=1.1" id="wp-syntax-js-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/easy-fancybox/js/jquery.fancybox.min.js?ver=1.3.24" id="jquery-fancybox-js"></script>
+<script type="text/javascript" id="jquery-fancybox-js-after">
+var fb_timeout, fb_opts={'overlayShow':true,'hideOnOverlayClick':true,'showCloseButton':true,'margin':20,'centerOnScroll':true,'enableEscapeButton':true,'autoScale':true };
+if(typeof easy_fancybox_handler==='undefined'){
+var easy_fancybox_handler=function(){
+jQuery('.nofancybox,a.wp-block-file__button,a.pin-it-button,a[href*="pinterest.com/pin/create"],a[href*="facebook.com/share"],a[href*="twitter.com/share"]').addClass('nolightbox');
+/* IMG */
+var fb_IMG_select='a[href*=".jpg"]:not(.nolightbox,li.nolightbox>a),area[href*=".jpg"]:not(.nolightbox),a[href*=".jpeg"]:not(.nolightbox,li.nolightbox>a),area[href*=".jpeg"]:not(.nolightbox),a[href*=".png"]:not(.nolightbox,li.nolightbox>a),area[href*=".png"]:not(.nolightbox),a[href*=".webp"]:not(.nolightbox,li.nolightbox>a),area[href*=".webp"]:not(.nolightbox)';
+jQuery(fb_IMG_select).addClass('fancybox image');
+var fb_IMG_sections=jQuery('.gallery,.wp-block-gallery,.tiled-gallery,.wp-block-jetpack-tiled-gallery');
+fb_IMG_sections.each(function(){jQuery(this).find(fb_IMG_select).attr('rel','gallery-'+fb_IMG_sections.index(this));});
+jQuery('a.fancybox,area.fancybox,li.fancybox a').each(function(){jQuery(this).fancybox(jQuery.extend({},fb_opts,{'transitionIn':'elastic','easingIn':'easeOutBack','transitionOut':'elastic','easingOut':'easeInBack','opacity':false,'hideOnContentClick':false,'titleShow':true,'titlePosition':'over','titleFromAlt':true,'showNavArrows':true,'enableKeyboardNav':true,'cyclic':false}))});};
+jQuery('a.fancybox-close').on('click',function(e){e.preventDefault();jQuery.fancybox.close()});
+};
+var easy_fancybox_auto=function(){setTimeout(function(){jQuery('#fancybox-auto').trigger('click')},1000);};
+jQuery(easy_fancybox_handler);jQuery(document).on('post-load',easy_fancybox_handler);
+jQuery(easy_fancybox_auto);
+</script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/easy-fancybox/js/jquery.easing.min.js?ver=1.4.1" id="jquery-easing-js"></script>
+<script type="text/javascript" src="https://gilluminate.com/wp-content/plugins/easy-fancybox/js/jquery.mousewheel.min.js?ver=3.1.13" id="jquery-mousewheel-js"></script>
+
+	</body>
+
+</html>
