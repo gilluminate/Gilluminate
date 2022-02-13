@@ -1,8 +1,11 @@
 Experienced UI Developer. Certified Web Accessibility Specialist
 
+
 ![IAAP WAS small circular badge and horizontal name logo for International Association of Accessibility Professionals (IAAP) Web Accessibility Specialist (WAS) credential. To the left is a dark blue circle with three lines of centered white text that read: IAAP Certified WAS. There is a smaller light blue circle that surrounds the dark blue inner circle that designates the WAS credential color scheme. To the right, two lines of dark blue text. Top text reads Web Accessibility Specialist, second line reads International Association of Accessibility Professionals.
 ](https://user-images.githubusercontent.com/103820/124042453-1c828580-d9c6-11eb-9e7f-a04cef7de227.jpg)
 
+
+![2022 EFF Member badge](https://www.eff.org/files/2021/12/20/member-badge-2022b.jpg)
 
 
 <!--
