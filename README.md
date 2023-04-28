@@ -4,7 +4,7 @@ Experienced UI Developer. Certified Web Accessibility Specialist
 [![IAAP WAS small circular badge and horizontal name logo for International Association of Accessibility Professionals (IAAP) Web Accessibility Specialist (WAS) credential. To the left is a dark blue circle with three lines of centered white text that read: IAAP Certified WAS. There is a smaller light blue circle that surrounds the dark blue inner circle that designates the WAS credential color scheme. To the right, two lines of dark blue text. Top text reads Web Accessibility Specialist, second line reads International Association of Accessibility Professionals.
 ](https://user-images.githubusercontent.com/103820/124042453-1c828580-d9c6-11eb-9e7f-a04cef7de227.jpg)](https://www.credly.com/badges/02cbb996-07e6-4be5-a99f-0d79462f5b03/public_url)
 
-<img src="https://www.eff.org/files/2021/12/20/member-badge-2022b.jpg" alt="2022 EFF Member badge" style="width: 130px"/>
+<img src="https://www.eff.org/files/2022/11/28/eff-2023-member-member.png" alt="2023 EFF Member badge" style="width: 100px"/>
 
 <!--
 **gilluminate/gilluminate** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
